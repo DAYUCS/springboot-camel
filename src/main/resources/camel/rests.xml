@@ -1,0 +1,13 @@
+<rests xmlns="http://camel.apache.org/schema/spring">
+
+    <rest path="/say">
+        <get>
+            <to uri="direct:hello"/>
+        </get>
+        
+        <post>
+            <to uri="direct:bye"/>
+        </post>
+    </rest>
+        
+</rests>
