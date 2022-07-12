@@ -1,0 +1,36 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: example-web
+  labels:
+    app: example-web
+spec:
+  publishNotReadyAddresses: true
+  ports:
+    - port: 8080
+  selector:
+    app: example-web
+  type: LoadBalancer
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: example-web
+  labels:
+    app: example-web
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: example-web
+  template:
+    metadata:
+      name: example-web
+      labels:
+        app: example-web
+    spec:
+      containers:
+        - name: example-web
+          image: biandayu/sample-spring-boot-camel
+          imagePullPolicy: IfNotPresent
+---
