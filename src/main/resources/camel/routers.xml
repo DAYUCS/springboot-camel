@@ -5,6 +5,7 @@
             <setBody>
                 <simple>Hello ${header.name}!</simple>
             </setBody>
+            <to uri="log:info" />
         </route>
 
 </routes>
